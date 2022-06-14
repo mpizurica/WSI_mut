@@ -1,0 +1,6 @@
+old_code/
+code/__pycache__/
+*.csv
+*.err
+*.out
+__pycache__/
