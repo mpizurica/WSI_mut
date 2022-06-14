@@ -1,7 +1,7 @@
 ## Slides and tiles
 - slides can be downloaded on the GDC data portal (https://portal.gdc.cancer.gov/repository). 
 - slide filenames discarded due to bad quality can be found in bad_quality_slides.txt
-- we generated tiles from annotations made in QuPath (https://qupath.github.io/). See qupath_tiling.groovy for code. The tiles can also be generated in python with the annotation masks we provide (see below). Make sure to save the gleason grade in the tile name if you want to select tiles from specific lesions later in training (or e.g. only export tiles from lesions with specific grade)
+- we generated tiles from annotations made in QuPath (https://qupath.github.io/). See qupath_tiling.groovy for code. The tiles can also be generated in python with the annotation masks we provide (see below). 
 - annotation masks are provided in masks_TCGA.zip. They were downsampled with __factor 64__ (important if tiling via python) and they are color coded to show the annotated Gleason Grade. The mapping for colors to Gleason Grade is as follows (where 'Tumor' denotes a region without annotated grade)
 ```
 mapping = {'(157, 13, 45)':'GS4+4', '(156, 1, 115)':'GS4+5', \
