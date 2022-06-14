@@ -1,5 +1,3 @@
-# 1. TCGA
-
 ## Slides and tiles
 - slides can be downloaded on the GDC data portal (https://portal.gdc.cancer.gov/repository). 
 - slide filenames discarded due to bad quality can be found in bad_quality_slides.txt
