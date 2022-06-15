@@ -19,9 +19,9 @@ mapping = {'(157, 13, 45)':'GS4+4', '(156, 1, 115)':'GS4+5', \
 ```
 
 ## Mutation data
-- see TCGA mutect tar file and ...
+- see [TCGA mutect](https://github.com/mpizurica/WSI_mut/blob/master/code/data_prep/tcga/TCGA.PRAD.mutect.deca36be-bf05-441a-b2e4-394228f23fbe.DR-10.0.somatic.tar.xz) tar file and [Strelka2.tar.xz](https://github.com/mpizurica/WSI_mut/blob/master/code/data_prep/tcga/Strelka2.tar.xz) file for mutation labels
 
 ## Preparing dataframe and tile quality filtering
-- ... prepare df
-- ... filter qual
+- use [prepare_dataframe.py](https://github.com/mpizurica/WSI_mut/blob/master/code/data_prep/tcga/prepare_dataframe.py) to create the dataframe with TCGA data
+- use [filter_tiles.py](https://github.com/mpizurica/WSI_mut/blob/master/code/data_prep/tcga/filter_tiles.py) to identify white and/or blurred tiles
 
