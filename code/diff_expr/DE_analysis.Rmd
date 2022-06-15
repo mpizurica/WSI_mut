@@ -1,0 +1,75 @@
+---
+title: "DE"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(edgeR)
+library(Glimma)
+library(limma)
+library(WGCNA)
+```
+
+# Load data
+```{r}
+TN = read.delim("C:/Users/Administrator/Downloads/tn.tsv", row.names=1)
+FP = read.delim("C:/Users/Administrator/Downloads/fp.tsv", row.names=1)
+counts <- cbind(TN, FP)
+#counts = 2^counts-1 #better to perform DE analysis on non-log-transformed counts
+```
+
+# Prepare the data 
+```{r}
+x <- DGEList(counts)
+samplenames <- colnames(x)
+group <- as.factor(c(rep(c("TN"), dim(TN)[2]),
+                     rep(c("FP"), dim(FP)[2])))
+x$samples$group <- group
+cpm <- cpm(x) # Convert to counts per million
+lcpm <- cpm(x, log=TRUE)
+L <- mean(x$samples$lib.size) * 1e-6
+M <- median(x$samples$lib.size) * 1e-6
+c(L, M)
+```
+
+# Remove lowly expressed genes 
+```{r}
+keep.exprs <- filterByExpr(x)
+xf <- x[keep.exprs,, keep.lib.sizes=FALSE]
+dim(xf)
+xf <- calcNormFactors(xf, method = "TMM")
+dim(xf)
+lcpm <- cpm(xf, log=TRUE)
+```
+
+# Differential expression analysis
+```{r}
+design <- model.matrix(~0+group)
+colnames(design) <- gsub("group", "", colnames(design))
+contr.matrix <- makeContrasts(
+  FPvsTN = FP-TN,
+  levels = colnames(design))
+```
+
+# Removing heteroscedascvity from the count data
+```{r}
+v <- voom(xf, design, plot=TRUE)
+vfit <- lmFit(v, design)
+vfit <- contrasts.fit(vfit, contrasts=contr.matrix)
+efit <- eBayes(vfit)
+
+summary(decideTests(efit))
+tfit <- treat(vfit, lfc = log2(1))
+dt <- decideTests(tfit)
+```
+
+# FP vs. TN
+```{r}
+FPvsTN <- topTable(efit, coef=1, n=Inf)
+write.table(FPvsTN, file = "C:/Users/Administrator/Downloads/fp_tn.tsv", row.names = T, sep = "\t", quote = F)
+```
+
