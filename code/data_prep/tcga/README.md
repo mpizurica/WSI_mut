@@ -22,6 +22,6 @@ mapping = {'(157, 13, 45)':'GS4+4', '(156, 1, 115)':'GS4+5', \
 - see TCGA mutect tar file and ...
 
 ## Preparing dataframe and tile quality filtering
-- ... prepare df
-- ... filter qual
+- use [prepare_dataframe.py](https://github.com/mpizurica/WSI_mut/blob/master/code/data_prep/tcga/prepare_dataframe.py) to create the dataframe with TCGA data
+- use [filter_tiles.py](https://github.com/mpizurica/WSI_mut/blob/master/code/data_prep/tcga/filter_tiles.py) to filter white and/or blurred tiles
 
