@@ -3,8 +3,7 @@ import os
 
 if __name__ == '__main__':
     gene = 'TP53' 
-    only_grade = 'all' # only_grade = 'highest'
-    GS_sort = ['GSTumor', 'GS3+3', 'GS3+4', 'GS4+3', 'GS4+4', 'GS3+5', 'GS4+5', 'GS5+3','GS5+4', 'GS5+5']
+    only_grade = 'all' # only_grade = 'highest' #--> choose whether to immediately only keep tiles from region with highest GS
     df_name = 'df_patients_labels.csv'
 
     ############# mutation labels
@@ -88,7 +87,29 @@ if __name__ == '__main__':
     df_patients_labels.columns = ['patient_id', 'tile_path', gene]
     df_patients_labels['tile_name'] = tile_name
 
-    df_patients_labels.to_csv(df_name)
+    ############# only keep tiles from region with highest grade (if desired)
+    df_patients_labels['tile_name'] = df_patients_labels['tile_path'].str.split('/').str[-1]
+    df_patients_labels['GS'] = df_patients_labels['tile_name'].str.split('_').str[-2]
+
+    GS_map = {'GS3+3':1,'GS3+4':2,'GS4+3':3,'GS4+4':4,\
+            'GS3+5':5,'GS4+5':6,'GS5+3':7,'GS5+4':8,\
+            'GS5+5':9, 'GS5+3MUCINOUSCARCINOMA':7, 'Tumor':0}
+
+    df_patients_labels['grade'] = df_patients_labels.GS.map(GS_map)
+
+    if only_grade == 'highest':
+        dataframes = []
+
+        grouped = df_patients_labels.groupby(df_patients_labels['patient_id'])
+        for k,g in grouped:
+            g = g.reset_index()
+            dataframes.append(g[g['grade'] == g['grade'].max()])
+
+        df_patients_labels_highest = pd.concat(dataframes).reset_index(drop=True) 
+        df_patients_labels_highest.to_csv(df_name)
+        
+    else:
+        df_patients_labels.to_csv(df_name)
 
 
     
