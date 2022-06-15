@@ -163,9 +163,9 @@ if __name__ == '__main__':
 
         # attention params
         'attention':args.attention,
-        'attention_module':'faisal', # "faisal" if faisal method, anything else gives our simpler version
-        'hidden_dim':256, #orig: 256
-        'hidden_dim2':128, #orig: 128
+        'attention_module':'faisal', 
+        'hidden_dim':256, 
+        'hidden_dim2':128, 
         'dropout':0.25, #if None then no dropout, orig: 0.25
         'use_b':True,
 
@@ -176,10 +176,10 @@ if __name__ == '__main__':
         'seed_crossval': int(args.seed_crossval),
 
         # augmentation settings
-        'brightness':0.2, #64.0/255, 
-        'contrast':0.2, #0.75, #, #
-        'saturation':0.1, #0.25, #
-        'hue':0.1, #0.04, # #
+        'brightness':0.2, 
+        'contrast':0.2, 
+        'saturation':0.1,
+        'hue':0.1,
 
         # set data settings
         'gene':'TP53',
@@ -193,11 +193,11 @@ if __name__ == '__main__':
 
         # training settings
         'batch_size':int(args.batch_size),
-        'learning_rate':float(args.lr), #1e-3
+        'learning_rate':float(args.lr), 
         'weight_decay':0,
         'num_epochs':int(args.num_epochs),
         'max_epochs_stop':150,
-        'use_scheduler':args.use_scheduler, #'step', # cosine or step or None
+        'use_scheduler':args.use_scheduler, 
         'pin_memory':False,
         'num_workers':int(args.num_workers),
         
@@ -294,15 +294,6 @@ if __name__ == '__main__':
 
     else:
         if n.attention == False:
-            # cross-validation split
-            # train_dfs = []
-            # val_dfs = []
-            # for fold_ind, (dev_ind, val_ind) in enumerate(stratified_group_k_fold(final_df["tile_path"], \
-            #                                                                     final_df[n.gene], \
-            #                                                                     final_df["patient_id"], \
-            #                                                                     n.num_folds, seed=n.seed_crossval)):
-            #     train_dfs.append(final_df.iloc[dev_ind])
-            #     val_dfs.append(final_df.iloc[val_ind])
 
             # cross-validation split
             X = final_df['tile_path'].values
@@ -317,17 +308,6 @@ if __name__ == '__main__':
         else: # split happens on slide-level instead of on tile-level
             temp = final_df.groupby(final_df['slide_name'])
             temp = temp.head(1)[['slide_name',n.gene,'patient_id']]
-
-            # train, test, split
-            # for fold_ind, (dev_ind, val_ind) in enumerate(stratified_group_k_fold(temp.index, \
-            #                                                                 temp[n.gene], \
-            #                                                                 temp["patient_id"], \
-            #                                                                 n.num_folds, seed=n.seed_crossval)):
-            #     complete_train_df_ = temp.iloc[dev_ind] 
-            #     test_df_ = temp.iloc[val_ind] 
-
-            #     train_dfs.append(final_df[final_df['patient_id'].isin(complete_train_df_['patient_id'].values)])
-            #     val_dfs.append(final_df[final_df['patient_id'].isin(test_df_['patient_id'].values)])
 
             X = temp.index.values
             y = temp[n.gene].values
@@ -455,6 +435,7 @@ if __name__ == '__main__':
     # Dataloaders
     dataloaders = {}
 
+    # Dataloaders tile level model
     if n.attention == False:
         if n.multiple_undersamplings == True:
             
@@ -487,6 +468,7 @@ if __name__ == '__main__':
             for i, key in enumerate(train_keys):
                 dataloaders[key] = DataLoader(data[key], batch_size=batch_size, shuffle=True,num_workers=n.num_workers)
 
+    # dataloaders attention based model
     else:
         class_weights_all = []
         train_keys = [k for k in data.keys() if 'train' in k]
@@ -519,7 +501,6 @@ if __name__ == '__main__':
             dataloaders[key] = DataLoader(data[key], batch_size=64, collate_fn=my_collate, num_workers=n.num_workers)
 
     # training model
-    is_inception = False # just not to use aux logits if we would use inception
 
     histories = []
     saved_models = []
@@ -596,10 +577,8 @@ if __name__ == '__main__':
                 max_epochs_stop=n.max_epochs_stop,
                 n_epochs=n.num_epochs, 
                 print_every=1,
-                is_inception=is_inception,
                 scheduler=scheduler,
-                num_workers=n.num_workers,
-                train_on_gpu=True)
+                num_workers=n.num_workers)
 
         else:
             model_i, history = train(
@@ -612,9 +591,7 @@ if __name__ == '__main__':
                 max_epochs_stop=n.max_epochs_stop,
                 n_epochs=n.num_epochs, 
                 print_every=1,
-                is_inception=is_inception,
-                scheduler=scheduler,
-                train_on_gpu=True)
+                scheduler=scheduler)
         
         np.save(n.save_path+'history-'+str(i)+'.npy', history)
 

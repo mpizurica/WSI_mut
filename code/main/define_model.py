@@ -1,7 +1,7 @@
 import torch.nn as nn
 import torchvision.models as models
 
-from AttentionClassifier import Attn_Net_Gated
+from attention_model import Attn_Net_Gated
 
 
 def get_final_model(model_name, attention_module, hidden_dim, hidden_dim2, use_b, dropout):
@@ -31,6 +31,7 @@ def get_final_model(model_name, attention_module, hidden_dim, hidden_dim2, use_b
             
     model = model.cuda()       
     return model
+
 
 def get_model(model_name):
 

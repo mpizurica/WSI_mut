@@ -16,7 +16,7 @@ ml load py-scikit-learn/1.0.2_py39
 source ~/code/wsi_mutation/bin/activate
  
 # run code
-python3.9 ~/code/WSI_mutation/code/Eval_TCGA.py --dest-folder allt_seed_2021 \
+python3.9 ~/code/WSI_mutation/code/eval_TCGA.py --dest-folder allt_seed_2021 \
                                                 --model-folder allt_seed_2021 \
                                                 --data-folder /oak/stanford/groups/ogevaert/data/Prad-TCGA/ \
                                                 --annot False \

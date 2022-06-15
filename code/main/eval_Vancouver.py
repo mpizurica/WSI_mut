@@ -50,6 +50,7 @@ class EvalTilesDataset(Dataset):
 
         return image, label, patient_id, tile_path, matching_id, filename
 
+
 if __name__=='__main__':
     # set up arg parser for command line
     parser = argparse.ArgumentParser()

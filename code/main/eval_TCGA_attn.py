@@ -9,7 +9,7 @@ import os
 import argparse
 from distutils.util import strtobool
 
-from AttentionClassifier import Attn_Net_Gated, ResNet_extractor
+from attention_model import Attn_Net_Gated, ResNet_extractor
 from loaders import default_loader
 from preprocess import get_dataframe, read_ldmb
 

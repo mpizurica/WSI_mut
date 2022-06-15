@@ -7,7 +7,7 @@ from sklearn.metrics import roc_auc_score
 import numpy as np
 import pandas as pd
 
-from AttentionClassifier import ResNet_extractor
+from attention_model import ResNet_extractor
 from loaders import default_loader
 from preprocess import read_ldmb
 
@@ -29,9 +29,7 @@ def train(model,
           max_epochs_stop=3,
           n_epochs=20,
           print_every=1,
-          scheduler=None,
-          is_inception=False,
-          train_on_gpu=True):
+          scheduler=None):
     """Train a PyTorch Model
 
     Params
@@ -106,8 +104,7 @@ def train(model,
         # Training loop
         for ii, (data, target) in enumerate(train_loader_ep):
             # Tensors to gpu
-            if train_on_gpu:
-                data, target = data.cuda(), target.cuda()
+            data, target = data.cuda(), target.cuda()
 
             # Clear gradients
             optimizer.zero_grad()
@@ -153,8 +150,7 @@ def train(model,
             # Validation loop
             for index, (data, target) in enumerate(valid_loader_ep):
                 # Tensors to gpu
-                if train_on_gpu:
-                    data, target = data.cuda(), target.cuda()
+                data, target = data.cuda(), target.cuda()
 
                 target = target.unsqueeze(1)
                 target = target.float()
@@ -344,9 +340,7 @@ def train_attn(model, # attention model
           n_epochs=20,
           print_every=1,
           scheduler=None,
-          num_workers=4,
-          is_inception=False,
-          train_on_gpu=True):
+          num_workers=4):
     """Train a PyTorch Model
 
     Params

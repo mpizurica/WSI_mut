@@ -14,5 +14,5 @@ ml load python/3.9.0
 source ~/code/wsi_mutation/bin/activate
  
 # run code
-python ~/code/WSI_mutation/code/AttentionVis.py --run-name attn_seed_512 \
-                                                --all-regions False
+python ~/code/WSI_mutation/code/eval_TCGA_attn.py   --run-name attn_seed_512 \
+                                                    --all-regions False
