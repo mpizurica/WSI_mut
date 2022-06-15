@@ -19,6 +19,9 @@ mapping = {'(157, 13, 45)':'GS4+4', '(156, 1, 115)':'GS4+5', \
 ```
 
 ## Mutation data
-- see TCGA mutect tar file and excel with labels from Kather et al. (2020) (https://doi.org/10.1038/s43018-020-0087-6) 
-- resulting labels per patient are given in [label_df.csv](https://github.com/mpizurica/WSI_mut/blob/master/code/data_prep/tcga/label_df.csv) (patients with inconsistent mutation labels discarded, as defined in paper)
+- see TCGA mutect tar file and ...
+
+## Preparing dataframe and tile quality filtering
+- ... prepare df
+- ... filter qual
 
