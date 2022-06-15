@@ -3,7 +3,7 @@
 - slide filenames discarded due to bad quality can be found in [bad_quality_slides.txt](https://github.com/mpizurica/WSI_mut/blob/master/code/data_prep/tcga/bad_qual_slides.txt)
 - we generated tiles from annotations made in QuPath (https://qupath.github.io/). See qupath_tiling.groovy for code. The tiles can also be generated in python with the annotation masks we provide (see below). 
 - code for identifying tiles with pen marks and blurred tiles are given in [data_preprocessing.py](https://github.com/mpizurica/WSI_mut/blob/master/code/data_prep/tcga/data_preprocessing.py)
-- annotation masks are provided in [masks_TCGA.zip](https://github.com/mpizurica/WSI_mut/blob/master/code/data_prep/tcga/masks_TCGA.zip). They were downsampled with __factor 64__ (important if tiling via python) and they are color coded to show the annotated Gleason Grade. The mapping for colors to Gleason Grade is as follows (where 'Tumor' denotes a region without annotated grade)
+- annotation masks are provided in [masks_TCGA.zip](https://github.com/mpizurica/WSI_mut/blob/master/code/data_prep/tcga/masks_TCGA.zip). They were downsampled with __factor 64__ and they are color coded to show the annotated Gleason Grade. The mapping for colors to Gleason Grade is as follows (where 'Tumor' denotes a region without annotated grade)
 ```
 mapping = {'(157, 13, 45)':'GS4+4', '(156, 1, 115)':'GS4+5', \
           '(119, 95, 233)':'Tumor', '(64, 197, 186)':'GS3+5', \
