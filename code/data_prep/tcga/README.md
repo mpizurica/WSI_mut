@@ -24,4 +24,4 @@ mapping = {'(157, 13, 45)':'GS4+4', '(156, 1, 115)':'GS4+5', \
 ## Preparing dataframe and tile quality filtering
 - use [prepare_dataframe.py](https://github.com/mpizurica/WSI_mut/blob/master/code/data_prep/tcga/prepare_dataframe.py) to create the dataframe with TCGA data. It will contain all tiles for patients with corresponding TP53 mutation label.
 - use [filter_tiles.py](https://github.com/mpizurica/WSI_mut/blob/master/code/data_prep/tcga/filter_tiles.py) to identify white, blurred, penmarked tiles
-
+- use [train_test_split.py](https://github.com/mpizurica/WSI_mut/blob/master/code/data_prep/tcga/train_test_split.py) to split data in train (train+validation) and held-out test set
