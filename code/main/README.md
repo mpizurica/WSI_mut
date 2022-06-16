@@ -15,6 +15,9 @@ How data should be structured to run the scripts
                   |--df_patients_labels.csv
                   |--blurred_tile_paths.txt
                   ...
+                  |--runs
+                       |--TCGA-train
+                       |--TCGA-eval
 ```
 
 files:
