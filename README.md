@@ -16,7 +16,7 @@ ullamcorper vestibulum turpis. Pellentesque cursus luctus mauris
 ![](images/annotations.png?raw=true)
 
 Detailed, expert-based WSI annotations for TCGA-PRAD are available in the [tcga](https://github.com/mpizurica/WSI_mut/tree/master/code/data_prep/tcga) folder.
-The folder also includes code for 
+The folder also includes code (and detailed instructions in the readme) for 
 - WSI tiling
 - filtering blurred tiles and tiles with pen marks
 - creating a dataframe that contains all tiles with corresponding _TP53_ mutation labels
