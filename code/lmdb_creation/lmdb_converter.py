@@ -176,15 +176,22 @@ def get_image_name_index(path):
 
 
 if __name__ == '__main__':
-    # parser = argparse.ArgumentParser(description='Convert images form files to LMDB.')
-    # parser.add_argument('--image_folder', type=str, help='Folder containing the images')
-    # parser.add_argument('--lmdb_output_path', type=str, help='Folder to save the database')
-    # parser.add_argument('--format', default='png', type=str, help='Folder to save the database')
-    # args = parser.parse_args()
-    # convert_folders(args.image_folder, args.format)
-    
-    path = '/labs/gevaertlab/data/prostate_cancer/TCGA_tiles/db_tiles_512px/'
-    db = 'TCGA-J4-A67L-01Z-00-DX1.4B2B89CD-B390-488F-AE3F-9E81E6D860AD.db'
-    #read_ldmb(path+db)
-    #print(get_length(path))
-    print(get_image_name_index(path))
+
+    # uncomment to convert folderstructure: save separate tiles of a slide into a LMDB for every slide
+
+    parser = argparse.ArgumentParser(description='Convert images form files to LMDB.')
+    parser.add_argument('--image_folder', type=str, help='Folder containing the images')
+    parser.add_argument('--lmdb_output_path', type=str, help='Folder to save the database')
+    parser.add_argument('--format', default='png', type=str, help='Folder to save the database')
+    args = parser.parse_args()
+    convert_folders(args.image_folder, args.format)
+
+    # uncomment to experiment with reading from such a file
+    # path = '/labs/gevaertlab/data/prostate_cancer/TCGA_tiles/db_tiles_512px/'
+    # db = 'TCGA-J4-A67L-01Z-00-DX1.4B2B89CD-B390-488F-AE3F-9E81E6D860AD.db'
+    # read_ldmb(path+db)
+    # print(get_length(path))
+
+    # uncomment to create csv that contains keys to corresponding tile names (for efficiency in data loading later in training)
+    # path = '/labs/gevaertlab/data/prostate_cancer/TCGA_tiles/db_tiles_512px/'
+    # print(get_image_name_index(path))

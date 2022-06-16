@@ -5,6 +5,7 @@ if __name__ == '__main__':
     gene = 'TP53' 
     only_grade = 'all' # only_grade = 'highest' #--> choose whether to immediately only keep tiles from region with highest GS
     df_name = 'df_patients_labels.csv'
+    source = '/data/thesis_2021/PRAD_dx/tiles_512px' # folder containing slides and tiles (see readme for folder structure)
 
     ############# mutation labels
     tcga_df = pd.read_csv('TCGA.PRAD.mutect.deca36be-bf05-441a-b2e4-394228f23fbe.DR-10.0.somatic.maf',
@@ -46,12 +47,9 @@ if __name__ == '__main__':
     # slides will contain slides of good quality
     slides = []
 
-    sources = ['/data/thesis_2021/PRAD_dx/tiles_512px'] # folder with tiles (subtree as in README)
-    for source in sources:
-        
-        for patient_subfolder in os.listdir(source):
-            if patient_subfolder not in bad_qual_slides:
-                slides.append(patient_subfolder)
+    for slide_subfolder in os.listdir(source):
+        if slide_subfolder not in bad_qual_slides:
+            slides.append(slide_subfolder)
 
     # remove slides of patients with inconsitent labels        
     slides_new = [i for i in slides if i[:12] not in inconsistent]
@@ -59,29 +57,27 @@ if __name__ == '__main__':
     ############# gather data in dataframe (all tiles, patient ids and their label)
     patients_labels = []
     tile_name = []
-
-    for source in sources:
         
-        # source folders contain folders with name = name of slide of patient
-        for patient_subfolder in os.listdir(source):
+    # source folders contain folders with name = name of slide of patient
+    for slide_subfolder in os.listdir(source):
+        
+        if slide_subfolder in slides_new:
             
-            if patient_subfolder in slides_new:
-                
-                if patient_subfolder[:12] in tcga_patients_gene:
-                    label = 1
-                else:
-                    label = 0
-            
-                # patient_subfolder contains subfolders per gleason score, tiles are in these folders
-                for GS_subfolder in os.listdir(source+'/'+patient_subfolder):
-                    if GS_subfolder != 'Image': #sometimes qupath makes an additional export 'Image'
-                        for tile_path in os.listdir(source+'/'+patient_subfolder+'/'+GS_subfolder):
+            if slide_subfolder[:12] in tcga_patients_gene:
+                label = 1
+            else:
+                label = 0
+        
+            # slide_subfolder contains subfolders per gleason score, tiles are in these folders
+            for GS_subfolder in os.listdir(source+'/'+slide_subfolder):
+                if GS_subfolder != 'Image': #sometimes qupath makes an additional export 'Image'
+                    for tile_path in os.listdir(source+'/'+slide_subfolder+'/'+GS_subfolder):
 
-                            patients_labels.append([patient_subfolder[:12], source+'/'+patient_subfolder+'/'+GS_subfolder+'/'+tile_path, label])
-                            tile_name.append('TCGA'+tile_path.split('TCGA')[-1])
-                            
-            #else:
-                #print('no label for '+patient_subfolder[:12])
+                        patients_labels.append([slide_subfolder[:12], source+'/'+slide_subfolder+'/'+GS_subfolder+'/'+tile_path, label])
+                        tile_name.append('TCGA'+tile_path.split('TCGA')[-1])
+                        
+        #else:
+            #print('no label for '+slide_subfolder[:12])
 
     df_patients_labels = pd.DataFrame(patients_labels)
     df_patients_labels.columns = ['patient_id', 'tile_path', gene]
