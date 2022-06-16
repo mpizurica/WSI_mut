@@ -27,4 +27,5 @@ The folder also includes code for
   <img src="https://github.com/mpizurica/WSI_mut/blob/master/images/model.png" alt="drawing" width="750"/>
  </p>
 
-Code for training the model is available in the [main](https://github.com/mpizurica/WSI_mut/tree/master/code/main) folder.
+Code for training the model is available in the [main](https://github.com/mpizurica/WSI_mut/tree/master/code/main) folder. Code for running the scripts are provided in the 
+[run_scripts](https://github.com/mpizurica/WSI_mut/tree/master/run_scripts) folder.
