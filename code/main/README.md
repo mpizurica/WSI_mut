@@ -13,4 +13,4 @@ which only contains tiles from dominant tumor region, as created in
   --all-regions         only relevant if `annot` is `True`. If `all-regions` is `False`, then only tiles from the dominant tumor region will be included. Otherwise, all annotated regions are taken into account. 
   --attention           If `True`, attention-based model is used, otherwise tile-level model.
   ```
-    
+    - results (model checkpoints, logfile...) will be saved in the dir provided in `dest-folder`
