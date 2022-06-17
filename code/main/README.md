@@ -23,6 +23,7 @@ How data should be structured to run the scripts
 files:
 
 - `TCGA_training.py`: training tile-level or attention-based model. You can set the desired level of annotation detail (dominant regions, all tumor regions, whole slide)
+  - Example on how to run provided in [run_scripts](https://github.com/mpizurica/WSI_mut/tree/master/run_scripts)
   - Note that in the current implementation, setting a certain level of annotation detail is achieved by selecting the dataframe with the correct filename (e.g. dataframe
 which only contains tiles from dominant tumor region, as created in 
 [prepare_dataframe.py](https://github.com/mpizurica/WSI_mut/blob/master/code/data_prep/tcga/prepare_dataframe.py)). The specific format of the filename should be
