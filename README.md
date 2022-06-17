@@ -101,6 +101,9 @@ which only contains tiles from dominant tumor region, as created in
   --dest-folder         Results (model checkpoints, logfile...) will be saved in the dir provided in data_folder + '/TCGA_training/runs/TCGA_train/' + dest_folder
   --use-db              If `True`, the code assumes you will use .db files that contain all tiles of a specific slide (instead of saving tiles separately in .jpg or .png). If so, then the code expects the databases to be stored in  data_folder+'TCGA_tiles/'+db_tiles_512px
   ```
+  
+  - `eval_TCGA.py`: evaluating tile-level model. Will use the model stored in data_folder+'TCGA_training/runs/TCGA_train/'+model_run_folder+'/'. The code returns dataframes containing predictions for all tiles in validation and test set.
+  - `eval_TCGA_attn.py`: evaluating attention-based model. The code returns dataframes containing predictions for all slides in validation and test set, and includes the attention weight per tile.
 
 
 # Interpretations
