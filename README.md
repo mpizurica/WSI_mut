@@ -111,7 +111,7 @@ which only contains tiles from dominant tumor region, as created in
 ![](images/interpretations.png?raw=true)
 
 To generate a tile as in (a):
-1. Use [pytorch-grad-cam](https://github.com/jacobgil/pytorch-grad-cam) for code) to obtain (binary) grad-cam mask
+1. Use [pytorch-grad-cam](https://github.com/jacobgil/pytorch-grad-cam) to obtain (binary) grad-cam mask
 2. For cell type detection in tiles see [HoverNet](https://github.com/vqdang/hover_net)
 3. The contour of the binary gradcam mask (from 1.) can be visualized on top of the tile (from 2.) as follows:
  
