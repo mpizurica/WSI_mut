@@ -80,7 +80,6 @@ if __name__ == '__main__':
     # bmir ct server: /labs/gevaertlab/data/prostate_cancer/
     data_folder = args.data_folder
     model_run_folder = args.model_folder
-    labels = 'kather_tcga' 
 
     variables = {
         'tiles_from_annot':args.annot, 
@@ -132,11 +131,11 @@ if __name__ == '__main__':
     }
 
     # get dataframe name
-    suffixes = {'LN':'LN', 'TP53':'', 'all_regions':'_all_regions','all_tiles':'_all_tiles'}
-    complete_train_df =  get_dataframe(data_folder=data_folder, labels=labels, suffixes=suffixes, gene=n.gene, \
+    suffixes = {'TP53':'', 'all_regions':'_all_regions','all_tiles':'_all_tiles'}
+    complete_train_df =  get_dataframe(data_folder=data_folder, suffixes=suffixes, gene=n.gene, \
                                         tiles_from_annot=n.tiles_from_annot, all_regions=n.all_regions, \
                                         attention=False, train_or_test='TRAIN')
-    test_df = get_dataframe(data_folder=data_folder, labels=labels, suffixes=suffixes, gene=n.gene, \
+    test_df = get_dataframe(data_folder=data_folder, suffixes=suffixes, gene=n.gene, \
                                         tiles_from_annot=n.tiles_from_annot, all_regions=n.all_regions, \
                                         attention=False, train_or_test='TEST')
 

@@ -105,7 +105,7 @@ def get_slidename(tile_path):
     return slidename[0]
 
 
-def get_dataframe(data_folder, labels, suffixes, gene, tiles_from_annot,\
+def get_dataframe(data_folder, suffixes, gene, tiles_from_annot,\
                   all_regions, attention, train_or_test):
 
     gene_suffix = suffixes[gene]
@@ -125,7 +125,7 @@ def get_dataframe(data_folder, labels, suffixes, gene, tiles_from_annot,\
     elif (tiles_from_annot == False):
         regions_suffix = suffixes['all_tiles']
 
-    df_name = 'df_patients_labels'+gene_suffix+'_'+labels+regions_suffix+attention_suffix+'_'+train_or_test+'.csv'
+    df_name = 'df_patients_labels'+gene_suffix+'_'+regions_suffix+attention_suffix+'_'+train_or_test+'.csv'
 
     # get train dataframe
     complete_df = pd.read_csv(data_folder+'TCGA_training/'+df_name, index_col=0) 

@@ -150,7 +150,6 @@ if __name__ == '__main__':
     os.mkdir(save_dir)
 
     # general settings
-    labels = 'kather_tcga' # or TCGA_mutect or kather_our
     use_db = args.use_db
     os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu_num 
 
@@ -158,7 +157,6 @@ if __name__ == '__main__':
         # whether to use tiles only from annotated regions
         'tiles_from_annot':args.annot,
         'all_regions': args.all_regions,
-        'labels':labels,
         'num_folds':3,
 
         # attention params
@@ -243,7 +241,7 @@ if __name__ == '__main__':
 
     # get dataframe name
     suffixes = {'LN':'LN', 'TP53':'', 'all_regions':'_all_regions','all_tiles':'_all_tiles', 'attention': '_attention'}
-    complete_train_df =  get_dataframe(data_folder, labels, suffixes, n.gene, n.tiles_from_annot, \
+    complete_train_df =  get_dataframe(data_folder, suffixes, n.gene, n.tiles_from_annot, \
                                         n.all_regions, n.attention, 'TRAIN')
 
     # remove blurred and pen marked

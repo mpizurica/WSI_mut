@@ -193,10 +193,10 @@ if __name__ == '__main__':
     #os.environ["CUDA_VISIBLE_DEVICES"] = '0'
 
     # get dataframe 
-    suffixes = {'LN':'LN', 'TP53':'', 'all_regions':'_all_regions','all_tiles':'_all_tiles', 'attention':'_attention'}
-    complete_train_df =  get_dataframe(data_folder=data_folder, labels='kather_tcga', suffixes=suffixes, gene='TP53', \
+    suffixes = {'TP53':'', 'all_regions':'_all_regions','all_tiles':'_all_tiles', 'attention':'_attention'}
+    complete_train_df =  get_dataframe(data_folder=data_folder, suffixes=suffixes, gene='TP53', \
                                         tiles_from_annot=True, all_regions=all_regions, attention=True, train_or_test='TRAIN')
-    test_df  = get_dataframe(data_folder=data_folder, labels='kather_tcga', suffixes=suffixes, gene='TP53', \
+    test_df  = get_dataframe(data_folder=data_folder, suffixes=suffixes, gene='TP53', \
                                         tiles_from_annot=True, all_regions=all_regions, attention=True, train_or_test='TEST')
 
     # remove blurred and pen marked
