@@ -110,7 +110,19 @@ which only contains tiles from dominant tumor region, as created in
 
 ![](images/interpretations.png?raw=true)
 
-For cell type detection in tiles see [HoverNet](https://github.com/vqdang/hover_net). 
+For cell type detection in tiles see [HoverNet](https://github.com/vqdang/hover_net). For grad-cam see [pytorch-grad-cam](https://github.com/jacobgil/pytorch-grad-cam). The contour of the resulting gradcam mask can be visualized on top of the original image as follows:
+
+```
+def show_cam_on_image_contour(img, mask, thresh=50):
+    mask_ = (mask*255).astype(np.uint8)
+    ret,thresh_img = cv2.threshold(mask_, thresh, 255, cv2.THRESH_BINARY)
+    contours, hierarchy = cv2.findContours(thresh_img, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    
+    cont_im = img
+    cv2.drawContours(cont_im, contours, -1, (0,0,0), 3)
+    
+    return cont_im
+```
 
 Code for differential gene expression analysis can be found in the [diff_expr](https://github.com/mpizurica/WSI_mut/tree/master/code/diff_expr) folder. To exectute:
 
