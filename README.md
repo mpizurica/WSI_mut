@@ -68,7 +68,7 @@ How data should be structured to run the scripts
                         |-- GSx+y 
                               |-- slide_name1.svs_coordx;coordy_GSx+y_.jpg 
                                ...
-                   |-- slide_name2.svs
+                  |-- slide_name2.svs
                    
            |--TCGA_training
                   |--df_patients_labels.csv
@@ -99,6 +99,7 @@ which only contains tiles from dominant tumor region, as created in
   --all-regions         only relevant if `annot` is `True`. If `all-regions` is `False`, then only tiles from the dominant tumor region will be included. Otherwise, all annotated regions are taken into account. 
   --attention           If `True`, attention-based model is used, otherwise tile-level model.
   --dest-folder         Results (model checkpoints, logfile...) will be saved in the dir provided in data_folder + '/TCGA_training/runs/TCGA_train/' + dest_folder
+  --use-db              If `True`, the code assumes you will use .db files that contain all tiles of a specific slide (instead of saving tiles separately in .jpg or .png). If so, then the code expects the databases to be stored in  data_folder+'TCGA_tiles/'+db_tiles_512px
   ```
 
 
