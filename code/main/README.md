@@ -27,9 +27,9 @@ files:
 which only contains tiles from dominant tumor region, as created in 
 [prepare_dataframe.py](https://github.com/mpizurica/WSI_mut/blob/master/code/data_prep/tcga/prepare_dataframe.py)). The specific format of the filename should be
 df_patients_labels<annotation_detail_suffix><attention_suffix><train_or_test>.csv with 
-        -<annotation_detail_suffix> = \_all\_tiles for the entire WSI, \_all\_regions for all annotated tumor regions, and empty for dominant tumor regions
-        -<attention_suffix> = '\_attention' if using the attention based model, otherwise empty
-        -<attention_suffix> = '\_TRAIN' for the train dataframe (later split in train and validation), '\_TEST' for the held-out test set (not used in this script)
+        - <annotation_detail_suffix> = \_all\_tiles for the entire WSI, \_all\_regions for all annotated tumor regions, and empty for dominant tumor regions
+        - <attention_suffix> = '\_attention' if using the attention based model, otherwise empty
+        - <train_or_test> = '\_TRAIN' for the train dataframe (later split in train and validation), '\_TEST' for the held-out test set (not used in this script)
 
   - Important arguments:
   
