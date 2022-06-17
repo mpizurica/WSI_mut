@@ -29,3 +29,7 @@ The folder also includes code (and detailed instructions in the readme) for
 
 Code for training the model is available in the [main](https://github.com/mpizurica/WSI_mut/tree/master/code/main) folder. Code for running the scripts are provided in the 
 [run_scripts](https://github.com/mpizurica/WSI_mut/tree/master/run_scripts) folder.
+
+# Interpretations
+
+![](images/interpretations.png?raw=true)
