@@ -136,5 +136,3 @@ Code for differential gene expression analysis can be found in the [diff_expr](h
 - htseq counts used in [prepare_de_files.py](https://github.com/mpizurica/WSI_mut/blob/master/code/diff_expr/prepare_de_files.py) can be downloaded from Xenahubs ([link](https://xenabrowser.net/datapages/?dataset=TCGA-PRAD.htseq_counts.tsv&host=https%3A%2F%2Fgdc.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443))
 
 # Citation
-
-# License
