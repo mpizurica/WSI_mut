@@ -4,12 +4,9 @@ Characterizing aggressive prostate cancer by using deep learning on Whole Slide 
 
 Arxiv | Journal link | Cite
 
-Nam dui ligula, fringilla a, euismod sodales, sollicitudin vel, wisi. Morbi auctor lorem non
-justo. Nam lacus libero, pretium at, lobortis vitae, ultricies et, tellus. Donec aliquet, tortor sed
-accumsan bibendum, erat ligula aliquet magna, vitae ornare odio metus a mi. Morbi ac orci et nisl
-hendrerit mollis. Suspendisse ut massa. Cras nec ante. Pellentesque a nulla. Cum sociis natoque
-penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam tincidunt urna. Nulla
-ullamcorper vestibulum turpis. Pellentesque cursus luctus mauris
+Recent studies have shown the potential of deep learning models to predict the presence of certain oncogenic mutations from histopathological slides. Such models could be of great use in molecular testing to indicate the regions of interest or to replace the need for sequencing. In this work we developed, evaluated and thoroughly interpreted models which predict _TP53_ mutations from H&E-stained slides of prostate cancer. Specifically, we developed models that perform well in case of significant tumor heterogeneity. 
+
+Our state-of-the-art model successfully generalizes to an independent, multi-focal cohort of advanced prostate cancer. Interestingly, the performance on metastatic lymph nodes is on par with that on primary tumors, illustrating that the cellular features associated with the presence of _TP53_ mutations in the primary tumor is still present in metastatic tumors. Finally, we identified several important biological pathways affecting stromal composition that are related to model predictions. Our findings confirm that the model is able to detect aberrations in _TP53_, including _TP53_ deletions, but it also picks up related biological processes associated with aggressive disease including lymph node metastasis and biochemical recurrence.
 
 # WSI annotations and processing
 
