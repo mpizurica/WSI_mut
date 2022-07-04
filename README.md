@@ -102,6 +102,7 @@ which only contains tiles from dominant tumor region, as created in
 - `eval_TCGA.py`: evaluating tile-level model. Will use the model stored in data_folder/TCGA_training/runs/TCGA_train/model_run_folder. The code returns dataframes containing predictions for all tiles in validation and test set.
 - `eval_TCGA_attn.py`: evaluating attention-based model. The code returns dataframes containing predictions for all slides in validation and test set, and includes the attention weight per tile.
 
+Checkpoints for _BeTiDo_ (see paper) can be downloaded on [this link](https://drive.google.com/drive/folders/18-zx6tSvv6M3INFP_UvgLYSmeXqzaiUj?usp=sharing).
 
 # Interpretations
 
