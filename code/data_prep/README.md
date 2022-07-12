@@ -5,4 +5,4 @@
 - splitting of train+validation and held-out test set
 
 ## UZ Ghent
-- ..
+- for data access, contact the Department of Pathology of the Ghent University Hospital (UZ Ghent)
