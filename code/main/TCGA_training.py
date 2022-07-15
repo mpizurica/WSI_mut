@@ -240,7 +240,7 @@ if __name__ == '__main__':
         logging.info('%s:%s' % (key, value))
 
     # get dataframe name
-    suffixes = {'LN':'LN', 'TP53':'', 'all_regions':'_all_regions','all_tiles':'_all_tiles', 'attention': '_attention'}
+    suffixes = {'TP53':'', 'all_regions':'_all_regions','all_tiles':'_all_tiles', 'attention': '_attention'}
     complete_train_df =  get_dataframe(data_folder, suffixes, n.gene, n.tiles_from_annot, \
                                         n.all_regions, n.attention, 'TRAIN')
 

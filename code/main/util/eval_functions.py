@@ -53,7 +53,7 @@ def get_tile_performances(model, dataloader):
     return final_auc, patient_ids, labels, probs, preds, tile_paths   
 
 
-def get_tile_performances_vanc(model, dataloader):
+def get_tile_performances_UZ(model, dataloader):
     patient_ids = []
     labels = []
     probs = []
@@ -93,7 +93,7 @@ def get_tile_performances_vanc(model, dataloader):
     return final_auc, patient_ids, labels, probs, preds, tile_paths, matching_ids, filenames
 
 
-def get_eval_df_vanc(patient_ids, labels, probs, preds, tile_paths, matching_ids, filenames):
+def get_eval_df_UZ(patient_ids, labels, probs, preds, tile_paths, matching_ids, filenames):
     patient_ids_flatten = [j for sub in patient_ids for j in sub]
     labels_flatten = [j for sub in labels for j in sub]
     probs_flatten = [j for sub in probs for j in sub]

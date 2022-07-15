@@ -12,7 +12,7 @@ import argparse
 import os
 
 from loaders import default_loader
-from eval_functions import get_tile_performances_vanc, get_eval_df_vanc
+from eval_functions import get_tile_performances_UZ, get_eval_df_UZ
 
 from types import SimpleNamespace  
 
@@ -66,7 +66,7 @@ if __name__=='__main__':
     data_folder = args.data_folder
 
     model_run_folder= 'runs/TCGA_train/seed_273/'
-    study = 'vanc'
+    study = 'UZ'
 
     variables = {
 
@@ -93,7 +93,7 @@ if __name__=='__main__':
     batch_size = 512
 
     # set up logger (such that it can be used in useful_functions.py as well)
-    logger = logging.getLogger('vanc_logger')
+    logger = logging.getLogger('UZ_logger')
 
     # config log file
     logging.basicConfig(filename=n.save_path+n.model_name+'-logfile-',
@@ -107,7 +107,7 @@ if __name__=='__main__':
         logging.info('%s:%s\n' % (key, value))
 
     # read dataframe
-    test_df = pd.read_csv(data_folder+'/TCGA_training/vancouver_df.csv')
+    test_df = pd.read_csv(data_folder+'/TCGA_training/UZ_df.csv')
     
     # remap tile path
     path_to_tiles = data_folder+'/TCGA_tiles/Vancouver_tiles_NEW/'
@@ -166,10 +166,10 @@ if __name__=='__main__':
         
     # eval models
     for i in range(3):
-        final_auc, patient_ids_test, labels_test, probs_test, preds_test, tile_paths_test, matching_ids_test, filenames_test = get_tile_performances_vanc(models[i], test_dataloader)
+        final_auc, patient_ids_test, labels_test, probs_test, preds_test, tile_paths_test, matching_ids_test, filenames_test = get_tile_performances_UZ(models[i], test_dataloader)
         print("Tile level AUC for fold "+str(i)+": "+str(final_auc))
     
-        test_eval_df =  get_eval_df_vanc(patient_ids_test, labels_test, probs_test, preds_test, tile_paths_test, matching_ids_test, filenames_test)
+        test_eval_df =  get_eval_df_UZ(patient_ids_test, labels_test, probs_test, preds_test, tile_paths_test, matching_ids_test, filenames_test)
         print('Calculated test eval df')
 
         test_eval_df.to_csv(n.save_path+study+'_eval_'+str(i)+'.csv')
