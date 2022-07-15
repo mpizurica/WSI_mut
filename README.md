@@ -99,8 +99,9 @@ which only contains tiles from dominant tumor region, as created in
   --use-db              If `True`, the code assumes you will use .db files that contain all tiles of a specific slide (instead of saving tiles separately in .jpg or .png). See lmdb_creation folder for more info. If `True`, then the code expects the databases to be stored in  data_folder/TCGA_tiles/db_tiles_512px/ and the code also expects a dataframe `img_name_to_index.csv` which contains the index of every tile within the LMDB of a given slide (for easier and faster tile processing in the dataset class - see code)
   ```
   
-- `eval_TCGA.py`: evaluating tile-level model. Will use the model stored in data_folder/TCGA_training/runs/TCGA_train/model_run_folder. The code returns dataframes containing predictions for all tiles in validation and test set.
-- `eval_TCGA_attn.py`: evaluating attention-based model. The code returns dataframes containing predictions for all slides in validation and test set, and includes the attention weight per tile.
+- `eval_TCGA.py`: evaluating tile-level model on TCGA. Will use the model stored in data_folder/TCGA_training/runs/TCGA_train/model_run_folder. The code returns dataframes containing predictions for all tiles in validation and test set.
+- `eval_UZ.py`: evaluates tile-level model on held-out test set from UZ Ghent.
+- `eval_TCGA_attn.py`: evaluating attention-based model on TCGA. The code returns dataframes containing predictions for all slides in validation and test set, and includes the attention weight per tile.
 
 Checkpoints for _BeTiDo_ (see paper) can be downloaded on [this link](https://drive.google.com/drive/folders/18-zx6tSvv6M3INFP_UvgLYSmeXqzaiUj?usp=sharing).
 
