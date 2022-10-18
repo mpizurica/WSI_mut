@@ -109,7 +109,7 @@ Checkpoints for _BeTiDo_ (see paper) can be downloaded on [this link](https://dr
 
 ![](images/interpretations.png?raw=true)
 
-To generate a tile as in (a):
+To generate a tile as in (a): (see [notebook](https://github.com/mpizurica/WSI_mut/tree/master/code/gradcam))
 1. Use [pytorch-grad-cam](https://github.com/jacobgil/pytorch-grad-cam) to obtain (binary) grad-cam mask
 2. For cell type detection in tiles see [HoverNet](https://github.com/vqdang/hover_net)
 3. The contour of the binary gradcam mask (from 1.) can be visualized on top of the tile (from 2.) as follows:
