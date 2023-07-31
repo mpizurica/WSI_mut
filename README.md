@@ -1,8 +1,8 @@
-# Characterizing aggressive prostate cancer by using deep learning on Whole Slide Images
+# Whole slide imaging-based prediction of TP53 mutations identifies an aggressive disease phenotype in prostate cancer 
 
-Characterizing aggressive prostate cancer by using deep learning on Whole Slide Images
+Whole slide imaging-based prediction of TP53 mutations identifies an aggressive disease phenotype in prostate cancer 
 
-Arxiv | Journal link | Cite
+[Journal link](https://aacrjournals.org/cancerres/article/doi/10.1158/0008-5472.CAN-22-3113/727461/Whole-slide-imaging-based-prediction-of-TP53) | Cite
 
 In prostate cancer, there is an urgent need for objective prognostic biomarkers that identify a tumor’s metastatic potential at an early stage. While recent analyses indicated _TP53_ mutations as candidate biomarker, molecular profiling in a clinical setting is complicated by tumor heterogeneity. Deep learning models that predict the spatial presence of _TP53_ mutations in Whole Slide Images (WSIs) offer the potential to mitigate this issue. Although previous studies show how these models
 achieve reasonable performance at patient level, it has not yet been validated whether they can also correctly indicate the region with the highest load of the predicted mutation within a heterogenous solid tumor. In addition, no in-depth assessment has been performed to explain the possible origin of FP or FN predictions, while such interpretations are imperative for model implementation in practice.
